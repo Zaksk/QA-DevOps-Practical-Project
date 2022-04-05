@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Food Roulette</title>
+    </head>
+
+    <body>
+        <h1>Welcome to the 2022 Food roulette</h1>
+        <br><br>
+        <h3>Please click the button below to win a random dish</h3>
+        <button onclick="window.location.reload()">
+            New Dish
+        </button>
+        
+        <h3>
+            {{ response }}
+        </h3>
+        <br>
+        <h4>Below are some previous won dishes:</h4>
+        <table>
+            {% for new_food in foods_history %}
+            
+                <tr><td>{{ new_food }}</td><td> {{ new_food.date_generated }}</td></tr>
+            
+            {% endfor %}
+        </table>
+    </body>
+</html>
