@@ -1,0 +1,27 @@
+<html>
+    <body style="background-color: #EF5859"></body>
+    <head>
+        <title>Food Roulette</title>
+    </head>
+
+    <body>
+        <h1>Welcome to the 2022 Food roulette</h1>
+        <br><br>
+        <h3>Please click the button below to win a random dish</h3>
+        <button onclick="window.location.reload()" type="button" class="btn btn-primary btn-sm">Spin New Food</button>
+        <h3>
+
+            {{ new_food }}
+        </h3>
+        <br>
+        <h4>Below are some previous won dishes:</h4>
+        <table>
+            {% for foods in past5 %}
+
+            {{ foods }}
+            <br>
+            
+            {% endfor %}
+        </table>
+    </body>
+</html>
