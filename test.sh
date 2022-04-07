@@ -1,5 +1,5 @@
 #!/bin/bash
-declare -a directories=("service-1")
+declare -a directories=("service-1" "service-2" "service-3" "service-4")
 for dir in "${directories[@]}"
 do
   cd ${dir}
