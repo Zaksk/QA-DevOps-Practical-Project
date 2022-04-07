@@ -16,4 +16,4 @@ def home():
     db.session.commit()
     past5 = Foods.query.order_by(Foods.id.desc()).limit(5).all()
     foods_history = Foods.query.all()
-    return render_template('layout.html', food = food, past5 = past5)
+    return render_template('layout.html', new_food = new_food, past5 = past5)
