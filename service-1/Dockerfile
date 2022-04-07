@@ -1,6 +1,6 @@
 # Dockerfile for a Python App
 FROM python:3.8
-WORKDIR /app
+WORKDIR /service-1
 COPY . .
 RUN pip3 install -r requirements.txt
 EXPOSE 5000

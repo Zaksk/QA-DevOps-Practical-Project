@@ -1,6 +1,6 @@
 from application import db
 
-class Food(db.Model):
+class Foods(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     food_name = db.Column(db.String(50))
     country_name = db.Column(db.String(50))

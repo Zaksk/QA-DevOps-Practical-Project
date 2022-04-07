@@ -1,0 +1,71 @@
+version: "3.8"
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+    networks:
+      - food-net
+    depends_on:
+      - service-1
+  mysql:
+    container_name: mysql
+    image: zaksk99/food-gen-db:latest
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: foodsdb
+    volumes:
+      - type: volume
+        source: foods-vol
+        target: /var/lib/mysql
+    networks:
+      - food-net
+  service-1:
+    container_name: service-1
+    image: zaksk99/service-1:latest
+    build: ./service-1
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - food-net
+    depends_on:
+      - mysql
+      - service-2
+      - service-3
+      - service-4
+  service-2:
+    #container_name: service-2
+    image: zaksk99/service-2:latest
+    build: ./service-2
+    deploy:
+      replicas: 3
+    networks:
+      - food-net
+  service-3:
+    #container_name: service-2
+    image: zaksk99/service-3:latest
+    build: ./service-3
+    deploy:
+      replicas: 3
+    networks:
+      - food-net
+  service-4:
+    #container_name: service-4
+    image: zaksk99/service-4:latest
+    build: ./service-4
+    deploy:
+      replicas: 3
+    networks:
+      - food-net
+volumes:
+  foods-vol:
+networks:
+  food-net:
