@@ -48,9 +48,9 @@ class TestViews(TestBase):
         food = "Spaghetti Bolognese"
         time = "up to 30"
         with requests_mock.Mocker() as m:
-            m.get("http://event_generator_service-2:5000/get_country", text=country)
-            m.get("http://event_generator_service-3:5000/get_time", text=time)
-            m.post("http://event_generator_service-4:5000/get_food", text=food)
+            m.get("http://food_generator_service-2:5000/get_country", text=country)
+            m.get("http://food_generator_service-3:5000/get_time", text=time)
+            m.post("http://food_generator_service-4:5000/get_food", text=food)
             response = self.client.get(url_for('home'))
             self.assertEqual(response.status_code, 200)
             self.assertIn(b'Morocco', response.data)
