@@ -9,7 +9,7 @@ pipeline {
 
         stage('build and push') {
             environment {
-                DOCKER_CREDS = credentials('docker-cred')
+                DOCKER_CREDS = credentials('docker-creds')
             }
             steps {
 
