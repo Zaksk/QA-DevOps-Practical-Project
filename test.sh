@@ -8,6 +8,7 @@ pip3 install -r test_requirements.txt
 for dir in "${directories[@]}"
 do
   cd ${dir}
+  pwd
   python3 -m pytest --cov=application --cov-report term-missing --cov-report=html -p no:warnings
   cd ..
 done
